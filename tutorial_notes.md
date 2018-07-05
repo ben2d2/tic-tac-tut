@@ -13,3 +13,8 @@ When we modified the Class to be a functional component, we also changed onClick
 
 ## Constructors
 > In JavaScript classes, you need to always call super when defining the constructor of a subclass. All React component classes that have a constructor should start it with a super(props) call.
+
+
+## Immutable
+
+Unlike the array push() method you might be more familiar with, the concat() method doesn’t mutate the original array, so we prefer it.
