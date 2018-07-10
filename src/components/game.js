@@ -39,6 +39,10 @@ class Game extends React.Component {
     return { col: col, row: row }
   }
 
+  refreshPage(){
+    window.location.reload();
+  }
+
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -82,7 +86,7 @@ class Game extends React.Component {
     }
     return (
       <div>
-        <h1>Tic-Tac-Toe</h1>
+        <h1>Tic-Tac-Toe <button type="button" onClick={ this.refreshPage }>New Game</button></h1>
         <h2>{status}</h2>
         <div className="game">
           <div className="game-board">
