@@ -2,6 +2,7 @@ body {
   font: 24px "Century Gothic", Futura, sans-serif;
   line-height: 40px;
   margin: 20px;
+  color: #36596E;
 }
 
 ol, ul {
@@ -20,7 +21,7 @@ ol, ul {
 
 .square {
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #36596E;
   float: left;
   font-size: 155px;
   font-weight: normal;
@@ -31,6 +32,7 @@ ol, ul {
   padding: 0;
   text-align: center;
   width: 165px;
+  color: #36596E;
 }
 
 .winning-square {
