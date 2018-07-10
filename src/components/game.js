@@ -46,7 +46,7 @@ class Game extends React.Component {
       col = 3
     }
 
-    return "(" + col + ", " + row + ")"
+    return { col: col, row: row }
   }
 
   handleClick(i) {
@@ -76,7 +76,8 @@ class Game extends React.Component {
         <tr key={move}>
           <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } /></td>
           <td>{move > 0 ? move : 'Start'}</td>
-          <td>{history[move].moveCoordinates}</td>
+          <td>{history[move].moveCoordinates ? history[move].moveCoordinates['col'] : ''}</td>
+          <td>{history[move].moveCoordinates ? history[move].moveCoordinates['row'] : ''}</td>
         </tr>
       )
     });
@@ -104,7 +105,8 @@ class Game extends React.Component {
             <thead>
               <th>Reset</th>
               <th>Move #</th>
-              <th>Col/Row</th>
+              <th>Col</th>
+              <th>Row</th>
             </thead>
             <tbody>{moves}</tbody>
           </table>
