@@ -20,6 +20,35 @@ class Game extends React.Component {
     })
   }
 
+  moveCoordinates(i) {
+    var row1 = [0, 1, 2];
+    var row2 = [3, 4, 5];
+    var row3 = [6, 7, 8];
+    var col1 = [0, 3, 6];
+    var col2 = [1, 4, 7];
+    var col3 = [2, 5, 8];
+
+    let row;
+    if (row1.includes(i)) {
+      row = 1
+    } else if (row2.includes(i)) {
+      row = 2
+    } else if (row3.includes(i)) {
+      row = 3
+    }
+
+    let col;
+    if (col1.includes(i)) {
+      col = 1
+    } else if (col2.includes(i)) {
+      col = 2
+    } else if (col3.includes(i)) {
+      col = 3
+    }
+
+    return "(" + col + ", " + row + ")"
+  }
+
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -30,6 +59,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        moveCoordinates: this.moveCoordinates(i)
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
@@ -47,7 +77,7 @@ class Game extends React.Component {
         'Go to game start';
       return (
         <li key={move}>
-          <button className="move-button" onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className="move-button" onClick={() => this.jumpTo(move)}>{desc} {history[move].moveCoordinates}</button>
         </li>
       )
     });
