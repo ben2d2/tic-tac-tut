@@ -50,10 +50,12 @@ ol, ul {
   margin-left: 20px;
 }
 
-button {
+.move-button {
   font-size: 18px;
   width: 180px;
   height: 40px;
-  background-color: #61ADDB;
+  background-color: #6DB2DC;
   border-radius: 5px;
+  border-color: #36596E;
+  color: #fff;
 }
