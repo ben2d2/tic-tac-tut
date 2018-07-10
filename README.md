@@ -1,6 +1,8 @@
 # React Tic-Tac-Toe Tutorial
 
-![Sample game board](tic-tac-tut.png)
+![Welcome Screen](tic-tac-tut-welcome.png)
+
+![Game board](tic-tac-tut.png)
 
 
 For learnding React
