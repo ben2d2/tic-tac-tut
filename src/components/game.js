@@ -21,30 +21,24 @@ class Game extends React.Component {
   }
 
   moveCoordinates(i) {
-    var row1 = [0, 1, 2];
-    var row2 = [3, 4, 5];
-    var row3 = [6, 7, 8];
-    var col1 = [0, 3, 6];
-    var col2 = [1, 4, 7];
-    var col3 = [2, 5, 8];
+    var rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    var cols = [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
 
-    let row;
-    if (row1.includes(i)) {
-      row = 1
-    } else if (row2.includes(i)) {
-      row = 2
-    } else if (row3.includes(i)) {
-      row = 3
-    }
+    var row = 0
+    rows.forEach((group, index) => {
+        if (group.includes(i)) {
+          row = index + 1
+        }
+      }
+    )
 
-    let col;
-    if (col1.includes(i)) {
-      col = 1
-    } else if (col2.includes(i)) {
-      col = 2
-    } else if (col3.includes(i)) {
-      col = 3
-    }
+    var col = 0
+    cols.forEach((col, index) => {
+        if (col.includes(i)) {
+          col = index + 1
+        }
+      }
+    )
 
     return { col: col, row: row }
   }
