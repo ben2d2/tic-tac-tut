@@ -54,7 +54,7 @@ ol, ul {
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .move-button {
@@ -74,4 +74,15 @@ th, td {
   padding: 5px;
   text-align: center;
   width: 120px;
+}
+
+input[type='text'] {
+  margin-left: 20px;
+  font-size: 20px;
+  padding: 2px;
+}
+
+input[type='submit'] {
+  font-size: 30px;
+  padding: 2px;
 }
