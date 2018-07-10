@@ -26,17 +26,13 @@ class Game extends React.Component {
 
     var row = 0
     rows.forEach((group, index) => {
-        if (group.includes(i)) {
-          row = index + 1
-        }
+        if (group.includes(i)) row = index + 1;
       }
     )
 
     var col = 0
-    cols.forEach((col, index) => {
-        if (col.includes(i)) {
-          col = index + 1
-        }
+    cols.forEach((group, index) => {
+        if (group.includes(i)) col = index + 1;
       }
     )
 
@@ -68,7 +64,7 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       return (
         <tr key={move}>
-          <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } /></td>
+          <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
           <td>{move > 0 ? move : 'Start'}</td>
           <td>{history[move].moveCoordinates ? history[move].moveCoordinates['col'] : ''}</td>
           <td>{history[move].moveCoordinates ? history[move].moveCoordinates['row'] : ''}</td>
@@ -79,7 +75,7 @@ class Game extends React.Component {
     let status;
     if (winner) {
       status = 'Winner: ' + winner['token'];
-    } else if (!winner && this.state.stepNumber == 9) {
+    } else if (!winner && this.state.stepNumber === 9) {
       status = "No winner. It's a draw!";
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
@@ -97,10 +93,12 @@ class Game extends React.Component {
           <div>{status}</div>
           <table>
             <thead>
-              <th>Reset</th>
-              <th>Move #</th>
-              <th>Col</th>
-              <th>Row</th>
+              <tr>
+                <th>Reset</th>
+                <th>Move #</th>
+                <th>Col</th>
+                <th>Row</th>
+              </tr>
             </thead>
             <tbody>{moves}</tbody>
           </table>
