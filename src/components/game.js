@@ -81,27 +81,30 @@ class Game extends React.Component {
       status = 'Next player: ' + (this.state.xIsNext ? this.props.players['X'] : this.props.players['O']);
     }
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            winningSquares={winner ? winner['winningSquares'] : []}
-            onClick={(i) => this.handleClick(i)}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <table>
-            <thead>
-              <tr>
-                <th>Reset</th>
-                <th>Move #</th>
-                <th>Col</th>
-                <th>Row</th>
-              </tr>
-            </thead>
-            <tbody>{moves}</tbody>
-          </table>
+      <div>
+        <h1>Tic-Tac-Toe</h1>
+        <h2>{status}</h2>
+        <div className="game">
+          <div className="game-board">
+            <Board
+              squares={current.squares}
+              winningSquares={winner ? winner['winningSquares'] : []}
+              onClick={(i) => this.handleClick(i)}
+            />
+          </div>
+          <div className="game-info">
+            <table>
+              <thead>
+                <tr>
+                  <th>Reset</th>
+                  <th>Move #</th>
+                  <th>Col</th>
+                  <th>Row</th>
+                </tr>
+              </thead>
+              <tbody>{moves}</tbody>
+            </table>
+          </div>
         </div>
       </div>
     );

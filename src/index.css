@@ -23,15 +23,15 @@ ol, ul {
   background: #fff;
   border: 1px solid #36596E;
   float: left;
-  font-size: 208px;
+  font-size: 171px;
   font-weight: normal;
-  line-height: 218px;
-  height: 218px;
+  line-height: 181px;
+  height: 181px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 218px;
+  width: 181px;
   color: #36596E;
 }
 
@@ -58,8 +58,8 @@ ol, ul {
 }
 
 .move-button {
-  margin-top: 5px;
-  max-width: 30px;
+  margin-top: 11px;
+  max-width: 25px;
 }
 
 table {
@@ -71,7 +71,6 @@ table, th, td {
 }
 
 th, td {
-  padding: 5px;
   text-align: center;
   width: 120px;
 }
