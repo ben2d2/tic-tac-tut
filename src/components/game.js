@@ -72,13 +72,12 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
       return (
-        <li key={move}>
-          <button className="move-button" onClick={() => this.jumpTo(move)}>{desc} {history[move].moveCoordinates}</button>
-        </li>
+        <tr key={move}>
+          <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } /></td>
+          <td>{move > 0 ? move : 'Start'}</td>
+          <td>{history[move].moveCoordinates}</td>
+        </tr>
       )
     });
 
@@ -101,7 +100,14 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <table>
+            <thead>
+              <th>Reset</th>
+              <th>Move #</th>
+              <th>Col/Row</th>
+            </thead>
+            <tbody>{moves}</tbody>
+          </table>
         </div>
       </div>
     );

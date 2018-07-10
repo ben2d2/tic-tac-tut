@@ -1,6 +1,6 @@
 body {
-  font: 24px "Century Gothic", Futura, sans-serif;
-  line-height: 40px;
+  font: 20px "Century Gothic", Futura, sans-serif;
+  line-height: 35px;
   margin: 20px;
   color: #36596E;
 }
@@ -23,15 +23,15 @@ ol, ul {
   background: #fff;
   border: 1px solid #36596E;
   float: left;
-  font-size: 155px;
+  font-size: 208px;
   font-weight: normal;
-  line-height: 165px;
-  height: 165px;
+  line-height: 218px;
+  height: 218px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 165px;
+  width: 218px;
   color: #36596E;
 }
 
@@ -58,11 +58,20 @@ ol, ul {
 }
 
 .move-button {
-  font-size: 18px;
-  width: 300px;
-  height: 40px;
-  background-color: #6DB2DC;
-  border-radius: 5px;
-  border-color: #36596E;
-  color: #fff;
+  margin-top: 5px;
+  max-width: 30px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #36596E;
+}
+
+th, td {
+  padding: 5px;
+  text-align: center;
+  width: 120px;
 }
