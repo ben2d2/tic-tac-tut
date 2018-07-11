@@ -21,21 +21,10 @@ class Game extends React.Component {
   }
 
   moveCoordinates(i) {
-    var rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-    var cols = [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
-
-    var row = 0
-    rows.forEach((group, index) => {
-        if (group.includes(i)) row = index + 1;
-      }
-    )
-
-    var col = 0
-    cols.forEach((group, index) => {
-        if (group.includes(i)) col = index + 1;
-      }
-    )
-
+    const rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+    const cols = [[0, 3, 6], [1, 4, 7], [2, 5, 8]];
+    const row = rows.findIndex(group => group.includes(i)) + 1;
+    const col = cols.findIndex(group => group.includes(i)) + 1;
     return { col: col, row: row }
   }
 
