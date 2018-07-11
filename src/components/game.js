@@ -13,23 +13,11 @@ class Game extends React.Component {
     }
   }
 
-  jumpTo(step) {
+  jumpTo(move) {
     this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      stepNumber: move,
+      xIsNext: (move % 2) === 0,
     })
-  }
-
-  moveCoordinates(i) {
-    const rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
-    const cols = [[0, 3, 6], [1, 4, 7], [2, 5, 8]];
-    const row = rows.findIndex(group => group.includes(i)) + 1;
-    const col = cols.findIndex(group => group.includes(i)) + 1;
-    return { col: col, row: row }
-  }
-
-  refreshPage(){
-    window.location.reload();
   }
 
   handleClick(i) {
@@ -42,11 +30,38 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
-        moveCoordinates: this.moveCoordinates(i)
+        coordinates: getCoordinates(i)
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
+  }
+
+  renderGameInfo(history) {
+    const moves = history.map((step, move) => {
+      return (
+        <tr key={move}>
+          <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
+          <td>{move > 0 ? move : 'Start'}</td>
+          <td>{step.coordinates ? step.coordinates['col'] : ''}</td>
+          <td>{step.coordinates ? step.coordinates['row'] : ''}</td>
+        </tr>
+      )
+    });
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Reset</th>
+            <th>Move #</th>
+            <th>Col</th>
+            <th>Row</th>
+          </tr>
+        </thead>
+        <tbody>{moves}</tbody>
+      </table>
+    )
   }
 
   render() {
@@ -54,29 +69,10 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const moves = history.map((step, move) => {
-      return (
-        <tr key={move}>
-          <td><img className='move-button' onClick={() => this.jumpTo(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
-          <td>{move > 0 ? move : 'Start'}</td>
-          <td>{history[move].moveCoordinates ? history[move].moveCoordinates['col'] : ''}</td>
-          <td>{history[move].moveCoordinates ? history[move].moveCoordinates['row'] : ''}</td>
-        </tr>
-      )
-    });
-
-    let status;
-    if (winner) {
-      status = 'Winner: ' + this.props.players[winner['token']];
-    } else if (!winner && this.state.stepNumber === 9) {
-      status = "No winner. It's a draw!";
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? this.props.players['X'] : this.props.players['O']);
-    }
     return (
       <div>
-        <h1>Tic-Tac-Toe <button type="button" onClick={ this.refreshPage }>New Game</button></h1>
-        <h2>{status}</h2>
+        <h1>Tic-Tac-Toe <button type="button" onClick={ refreshPage }>New Game</button></h1>
+        <h2>{getStatus(winner, this.props, this.state)}</h2>
         <div className="game">
           <div className="game-board">
             <Board
@@ -86,17 +82,7 @@ class Game extends React.Component {
             />
           </div>
           <div className="game-info">
-            <table>
-              <thead>
-                <tr>
-                  <th>Reset</th>
-                  <th>Move #</th>
-                  <th>Col</th>
-                  <th>Row</th>
-                </tr>
-              </thead>
-              <tbody>{moves}</tbody>
-            </table>
+            {this.renderGameInfo(history)}
           </div>
         </div>
       </div>
@@ -104,24 +90,44 @@ class Game extends React.Component {
   }
 }
 
+function getCoordinates(i) {
+  const rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+  const cols = [[0, 3, 6], [1, 4, 7], [2, 5, 8]];
+
+  return {
+    col: cols.findIndex(group => group.includes(i)) + 1,
+    row: rows.findIndex(group => group.includes(i)) + 1
+  }
+}
+
 function calculateWinner(squares) {
   const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
+    [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return { token: squares[a], winningSquares: lines[i] };
+      return { token: squares[a], winningSquares: [a, b, c] };
     }
   }
   return null;
+}
+
+function refreshPage(){
+  window.location.reload();
+}
+
+function getStatus(winner, props, state) {
+  if (winner) {
+    return 'Winner: ' + props.players[winner['token']];
+  } else if (!winner && state.stepNumber === 9) {
+    return "No winner. It's a draw!";
+  } else {
+    var X = 'X-' + props.players.X;
+    var O = 'O-' + props.players.O;
+    return 'Next player: ' + (state.xIsNext ? X : O);
+  }
 }
 
 export default Game;
