@@ -62,8 +62,16 @@ ol, ul {
   max-width: 25px;
 }
 
-button {
-  font-size: 24px;
+.new-game-button {
+  font-size: 30px;
+  line-height: 36px;
+  background-color: #36596E;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.left-margin {
+  margin-left: 30px;
 }
 
 table {
@@ -82,10 +90,5 @@ th, td {
 input[type='text'] {
   margin-left: 20px;
   font-size: 20px;
-  padding: 2px;
-}
-
-input[type='submit'] {
-  font-size: 30px;
   padding: 2px;
 }

@@ -71,7 +71,7 @@ class Game extends React.Component {
 
     return (
       <div>
-        <h1>Tic-Tac-Toe <button type="button" onClick={ refreshPage }>New Game</button></h1>
+        <h1>Tic-Tac-Toe<button className="new-game-button left-margin" type="button" onClick={ refreshPage }>New Game</button></h1>
         <h2>{getStatus(winner, this.props, this.state)}</h2>
         <div className="game">
           <div className="game-board">
@@ -120,12 +120,12 @@ function refreshPage(){
 
 function getStatus(winner, props, state) {
   if (winner) {
-    return 'Winner: ' + props.players[winner['token']];
+    return 'Winner: ' + props.players[winner['token']] + ' (' + winner['token'] + ')';
   } else if (!winner && state.stepNumber === 9) {
     return "No winner. It's a draw!";
   } else {
-    var X = 'X-' + props.players.X;
-    var O = 'O-' + props.players.O;
+    var X = props.players.X + ' (X)';
+    var O = props.players.O + ' (O)';
     return 'Next player: ' + (state.xIsNext ? X : O);
   }
 }

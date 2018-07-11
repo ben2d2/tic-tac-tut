@@ -39,16 +39,16 @@ class GameForm extends React.Component {
             <p>
               <label>
                 Player name using <strong>X</strong>:
-                <input name='X' type="text" value={this.state.value} onChange={this.handleChange} />
+                <input name='X' type="text" onChange={this.handleChange} />
               </label>
             </p>
             <p>
               <label>
                 Player name using <strong>O</strong>:
-                <input name='O' type="text" value={this.state.value} onChange={this.handleChange} />
+                <input name='O' type="text" onChange={this.handleChange} />
               </label>
             </p>
-            <input type="submit" value="Start a Game" />
+            <input className="new-game-button" type="submit" value="Start Game" />
           </form>
         </div>
       );
