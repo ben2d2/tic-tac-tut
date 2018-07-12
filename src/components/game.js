@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './board.js';
+import Status from './status.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -77,7 +78,12 @@ class Game extends React.Component {
     return (
       <div>
         <h1>Tic-Tac-Toe<button className="new-game-button left-margin" type="button" onClick={ refreshPage }>New Game</button></h1>
-        <h2>{getStatus(winner, this.props, this.state)}</h2>
+        <Status
+          winner={winner}
+          players={this.props.players}
+          xIsNext={this.state.xIsNext}
+          stepNumber={this.state.stepNumber}
+        />
         <div className="game">
           <div className="game-board">
             <Board
@@ -121,18 +127,6 @@ function calculateWinner(squares) {
 
 function refreshPage(){
   window.location.reload();
-}
-
-function getStatus(winner, props, state) {
-  if (winner) {
-    return 'Winner: ' + props.players[winner['token']] + ' (' + winner['token'] + ')';
-  } else if (!winner && state.stepNumber === 9) {
-    return "No winner. It's a draw!";
-  } else {
-    var X = props.players.X + ' (X)';
-    var O = props.players.O + ' (O)';
-    return 'Next player: ' + (state.xIsNext ? X : O);
-  }
 }
 
 export default Game;

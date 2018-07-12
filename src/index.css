@@ -92,3 +92,13 @@ input[type='text'] {
   font-size: 20px;
   padding: 2px;
 }
+
+.game-over-banner {
+  padding: 20px;
+  background: #14bdac;
+  font-size: 81px;
+  font-weight: 600;
+  line-height: 101px;
+  margin-bottom: 40px;
+  width: 1271px;
+}
