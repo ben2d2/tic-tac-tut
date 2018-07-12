@@ -2,7 +2,7 @@ body {
   font: 20px "Century Gothic", Futura, sans-serif;
   line-height: 35px;
   margin: 20px;
-  color: #36596E;
+  color: #545454;
 }
 
 ol, ul {
@@ -21,7 +21,7 @@ ol, ul {
 
 .square {
   background: #fff;
-  border: 1px solid #36596E;
+  border: 1px solid #545454;
   float: left;
   font-size: 171px;
   font-weight: normal;
@@ -32,12 +32,12 @@ ol, ul {
   padding: 0;
   text-align: center;
   width: 181px;
-  color: #36596E;
+  color: #545454;
 }
 
 .winner {
-  background: #66CDAA;
-  color: #fff;
+  background: #14bdac;
+  color: #545454;
 }
 
 .square:focus {
@@ -65,7 +65,7 @@ ol, ul {
 .new-game-button {
   font-size: 20px;
   line-height: 36px;
-  background-color: #36596E;
+  background-color: #545454;
   color: #fff;
   border-radius: 5px;
 }
@@ -79,7 +79,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #36596E;
+  border: 1px solid #545454;
 }
 
 th, td {
