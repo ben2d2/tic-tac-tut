@@ -6,62 +6,50 @@ class GameInfo extends React.Component {
       var prevMove = (move - 1);
       var token = ((prevMove) % 2) === 0 ? 'X' : 'O'
       var playerName = this.props.players[token];
+
+      var baseColumns = [
+        <img className='move-button' onClick={() => this.props.onClick(move)} src={ require('../images/refresh.png') } alt='refresh icon'/>,
+        move > 0 ? move : 'Start',
+        playerName,
+        move > 0 ? token : '',
+        step.coordinates ? step.coordinates['col'] : '',
+        step.coordinates ? step.coordinates['row'] : ''
+      ];
       if (playerName) {
-        return (
-          <tr key={move}>
-            <td><img className='move-button' onClick={() => this.props.onClick(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
-            <td>{move > 0 ? move : 'Start'}</td>
-            <td>{move > 0 ? playerName : ''}</td>
-            <td>{move > 0 ? token : ''}</td>
-            <td>{step.coordinates ? step.coordinates['col'] : ''}</td>
-            <td>{step.coordinates ? step.coordinates['row'] : ''}</td>
-          </tr>
-        )
+        var columns = baseColumns.map((col) => { return <td>{col}</td>})
       } else {
-        return (
-          <tr key={move}>
-            <td><img className='move-button' onClick={() => this.props.onClick(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
-            <td>{move > 0 ? move : 'Start'}</td>
-            <td>{move > 0 ? token : ''}</td>
-            <td>{step.coordinates ? step.coordinates['col'] : ''}</td>
-            <td>{step.coordinates ? step.coordinates['row'] : ''}</td>
-          </tr>
-        )
+        baseColumns.splice(2, 1)
+        var columns = baseColumns.map((col) => { return <td>{col}</td>})
       }
+
+      return (
+        <tr key={move}>
+          {columns}
+        </tr>
+      )
     });
 
+    let headers;
     if (this.props.players['X'] && this.props.players['O']) {
-      return (
-        <table>
-          <thead>
-            <tr>
-              <th>Reset</th>
-              <th>Move #</th>
-              <th>Player</th>
-              <th>Token</th>
-              <th>Col</th>
-              <th>Row</th>
-            </tr>
-          </thead>
-          <tbody>{moves}</tbody>
-        </table>
-      )
+      headers = ['Reset', 'Move#', 'Player', 'Token', 'Col', 'Row'].map((header) => {
+        return <th>{header}</th>
+      })
     } else {
-      return (
-        <table>
-          <thead>
-            <tr>
-              <th>Reset</th>
-              <th>Move #</th>
-              <th>Token</th>
-              <th>Col</th>
-              <th>Row</th>
-            </tr>
-          </thead>
-          <tbody>{moves}</tbody>
-        </table>
-      )
+      headers = ['Reset', 'Move#', 'Token', 'Col', 'Row'].map((header) => {
+        return <th>{header}</th>
+      })
     }
+
+    return (
+      <table>
+        <thead>
+          <tr>
+            {headers}
+          </tr>
+        </thead>
+        <tbody>{moves}</tbody>
+      </table>
+    )
   }
 }
 
