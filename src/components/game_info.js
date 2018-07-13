@@ -3,7 +3,8 @@ import React from 'react';
 class GameInfo extends React.Component {
   render() {
     const moves = this.props.history.map((step, move) => {
-      var token = ((move - 1) % 2) === 0 ? 'X' : 'O'
+      var prevMove = (move - 1);
+      var token = ((prevMove) % 2) === 0 ? 'X' : 'O'
       return (
         <tr key={move}>
           <td><img className='move-button' onClick={() => this.props.onClick(move)} src={ require('../images/refresh.png') } alt='refresh icon'/></td>
