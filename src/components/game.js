@@ -2,6 +2,7 @@ import React from 'react';
 import Board from './board.js';
 import GameInfo from './game_info.js';
 import Status from './status.js';
+import GameOver from './game_over.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -39,21 +40,25 @@ class Game extends React.Component {
     });
   }
 
-  render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+  renderStatus(winner) {
+    if (!winner && this.state.stepNumber < 9) {
+      return (
+        <div className="status">
+          <Status
+            players={this.props.players}
+            xIsNext={this.state.xIsNext}
+          />
+        </div>
+      )
+    }
+  }
 
-    return (
-      <div>
-        <h1>Tic-Tac-Toe<button className="new-game-button left-margin" type="button" onClick={ refreshPage }>New Game</button></h1>
-        <Status
-          winner={winner}
-          players={this.props.players}
-          xIsNext={this.state.xIsNext}
-          stepNumber={this.state.stepNumber}
-        />
-        <div className="game">
+  renderGameComponent(current, winner) {
+    if (winner || this.state.stepNumber === 9) {
+      return <GameOver winner={winner} players={this.props.players} />
+    } else {
+      return (
+        <div>
           <div className="game-board">
             <Board
               squares={current.squares}
@@ -61,6 +66,22 @@ class Game extends React.Component {
               onClick={(i) => this.handleClick(i)}
             />
           </div>
+        </div>
+      )
+    }
+  }
+
+  render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+
+    return (
+      <div>
+        <h1>Tic-Tac-Toe</h1>
+        {this.renderStatus(winner)}
+        <div className="game">
+          {this.renderGameComponent(current, winner)}
           <div className="game-info">
             <GameInfo
               history={history}
@@ -92,14 +113,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return { token: squares[a], winningSquares: [a, b, c] };
+      return squares[a];
     }
   }
   return null;
-}
-
-function refreshPage(){
-  window.location.reload();
 }
 
 export default Game;

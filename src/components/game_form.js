@@ -33,13 +33,13 @@ class GameForm extends React.Component {
           <p>
             <label>
               Player name using <strong>X</strong>:
-              <input name='X' type="text" onChange={this.handleChange} />
+              <input name='X' type="text" onChange={this.handleChange} maxLength="10"/>
             </label>
           </p>
           <p>
             <label>
               Player name using <strong>O</strong>:
-              <input name='O' type="text" onChange={this.handleChange} />
+              <input name='O' type="text" onChange={this.handleChange} maxLength="10"/>
             </label>
           </p>
           <input className="new-game-button" type="submit" value="Start Game" />

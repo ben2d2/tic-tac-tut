@@ -1,6 +1,6 @@
 body {
-  font: 20px "Century Gothic", Futura, sans-serif;
-  line-height: 35px;
+  font: 15px "Century Gothic", Futura, sans-serif;
+  line-height: 24px;
   margin: 20px;
   color: #545454;
 }
@@ -20,24 +20,24 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #545454;
+  background: #14bdac;
+  border: 4px solid #0ea092;
   float: left;
-  font-size: 171px;
-  font-weight: normal;
-  line-height: 181px;
-  height: 181px;
+  font-size: 140px;
+  font-weight: 300;
+  line-height: 150px;
+  height: 150px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 181px;
+  width: 150px;
   color: #545454;
 }
 
 .winning-square {
   background: #14bdac;
-  color: #545454;
+  color: #f2ebd3;
 }
 
 .square:focus {
@@ -58,16 +58,16 @@ ol, ul {
 }
 
 .move-button {
-  margin-top: 11px;
+  margin-top: 7px;
   max-width: 25px;
 }
 
 .new-game-button {
-  font-size: 20px;
-  line-height: 36px;
+  font-size: 15px;
+  line-height: 24px;
   background-color: #545454;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .left-margin {
@@ -89,16 +89,59 @@ th, td {
 
 input[type='text'] {
   margin-left: 20px;
-  font-size: 20px;
+  font-size: 15px;
   padding: 2px;
 }
 
 .game-over-banner {
   padding: 20px;
   background: #14bdac;
-  font-size: 81px;
-  font-weight: 600;
-  line-height: 101px;
+  border: 6px solid #0ea092;
+  font-size: 140px;
+  line-height: 150px;
   margin-bottom: 40px;
-  width: 1271px;
+  color: #f2ebd3;
+  width: 397px;
+  text-align: center;
+}
+
+.sub-heading {
+  font-size: 48px;
+  line-height: 50px;
+}
+
+.restart {
+  margin-top: 20px;
+  padding-top: 18px;
+  font-size: 18px;
+  line-height: 20px;
+  border-top: 3px solid #0ea092;
+}
+
+a:link {
+  color: #545454;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #545454;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #08877b;
+  text-decoration: underline;
+}
+
+.status {
+  display: block;
+  width: 100%;
+}
+
+.square-X {
+  color: #545454;
+}
+
+.square-O {
+  color: #f2ebd3;
 }
