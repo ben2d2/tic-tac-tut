@@ -15,12 +15,10 @@ class GameInfo extends React.Component {
         step.coordinates ? step.coordinates['col'] : '',
         step.coordinates ? step.coordinates['row'] : ''
       ];
-      if (playerName) {
-        var columns = baseColumns.map((col) => { return <td>{col}</td>})
-      } else {
+      if (!playerName) {
         baseColumns.splice(2, 1)
-        var columns = baseColumns.map((col) => { return <td>{col}</td>})
       }
+      var columns = baseColumns.map((col, i) => { return <td key={"td-" + i}>{col}</td>})
 
       return (
         <tr key={move}>
@@ -29,16 +27,13 @@ class GameInfo extends React.Component {
       )
     });
 
-    let headers;
-    if (this.props.players['X'] && this.props.players['O']) {
-      headers = ['Reset', 'Move#', 'Player', 'Token', 'Col', 'Row'].map((header) => {
-        return <th>{header}</th>
-      })
-    } else {
-      headers = ['Reset', 'Move#', 'Token', 'Col', 'Row'].map((header) => {
-        return <th>{header}</th>
-      })
+    var baseHeaders = ['Reset', 'Move#', 'Player', 'Token', 'Col', 'Row'];
+    if (!this.props.players['X'] && !this.props.players['O']) {
+      baseHeaders.splice(2, 1)
     }
+    var headers = baseHeaders.map((header, i) => {
+      return <th key={"tr-" + i}>{header}</th>
+    })
 
     return (
       <table>

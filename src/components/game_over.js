@@ -28,7 +28,7 @@ class GameOver extends React.Component {
               WINNER!
             </div>
             <div className="restart">
-              <a href="#" onClick={ refreshPage }>RESTART</a>
+              <a href={null} onClick={ refreshPage }>RESTART</a>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ class GameOver extends React.Component {
             It's a Draw!
           </div>
           <div className="restart">
-            <a href="#" onClick={ refreshPage }>RESTART</a>
+            <a href={null} onClick={ refreshPage }>RESTART</a>
           </div>
         </div>
       )
