@@ -2,7 +2,13 @@
 
 ![Welcome Screen](tic-tac-tut-welcome.png)
 
-![Game board](tic-tac-tut.png)
+![Game board](tic-tac-tut-empty-board.png)
+
+![X is Winner](tic-tac-tut-x-winner.png)
+
+![O is Winner](tic-tac-tut-o-winner.png)
+
+![It's a Draw](tic-tac-tut-draw.png)
 
 
 For learnding React
