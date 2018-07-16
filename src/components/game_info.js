@@ -10,7 +10,7 @@ class GameInfo extends React.Component {
       var baseColumns = [
         <img className='move-button' onClick={() => this.props.onClick(move)} src={ require('../images/refresh.png') } alt='refresh icon'/>,
         move > 0 ? move : 'Start',
-        playerName,
+        move > 0 ? playerName : '',
         move > 0 ? token : '',
         step.coordinates ? step.coordinates['col'] : '',
         step.coordinates ? step.coordinates['row'] : ''
